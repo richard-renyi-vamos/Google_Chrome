@@ -1,0 +1,58 @@
+CHAT GPT PROMPT:  create chrome extension that lets you search on google
+-------------
+
+Sure, I can provide you with general guidance on how to create a Chrome extension that lets you search on Google. Here are the steps:
+
+Create a new folder: Create a new folder on your computer with a name of your choice. This will be the root directory of your Chrome extension.
+
+Create a manifest file: In the root directory, create a new file named "manifest.json". This file is required by Chrome to recognize the extension and its functionality. In the manifest file, you will need to include details such as the name, version number, description, permissions, etc. Here is an example of a basic manifest file:
+
+json
+Copy code
+{
+  "manifest_version": 2,
+  "name": "My Google Search Extension",
+  "version": "1.0",
+  "description": "A simple Chrome extension that allows you to search on Google",
+  "permissions": ["https://www.google.com/*"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  }
+}
+Create a popup HTML file: In the root directory, create a new file named "popup.html". This file will contain the user interface for the extension. You can add a search bar to this file that will allow the user to enter their search query. Here is an example of a basic popup HTML file:
+php
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Google Search Extension</title>
+  <script src="popup.js"></script>
+</head>
+<body>
+  <form>
+    <input type="text" id="search-query">
+    <button type="submit" id="search-button">Search</button>
+  </form>
+</body>
+</html>
+Create a popup JavaScript file: In the root directory, create a new file named "popup.js". This file will contain the logic for the extension. You can use this file to listen for user input and trigger a search on Google when the user submits the form. Here is an example of a basic popup JavaScript file:
+javascript
+Copy code
+document.addEventListener('DOMContentLoaded', function() {
+  var searchButton = document.getElementById('search-button');
+  var searchQuery = document.getElementById('search-query');
+
+  searchButton.addEventListener('click', function() {
+    var query = searchQuery.value;
+    var url = 'https://www.google.com/search?q=' + query;
+    chrome.tabs.create({url: url});
+  });
+});
+Add the extension to Chrome: Open Chrome and go to "chrome://extensions". Turn on developer mode by toggling the switch in the top right corner. Click on "Load unpacked" and select the root directory of your extension.
+
+Test the extension: Click on the extension icon in the top right corner of Chrome to open the popup. Enter a search query and click the search button. The extension should open a new tab and perform a Google search with the entered query.
+
+Publish the extension: If you want to publish your extension to the Chrome Web Store, you will need to create a developer account and follow the guidelines provided by Google.
+
+Please note that creating a Chrome extension requires knowledge of web development technologies such as HTML, CSS, JavaScript, and the Chrome extension API. It can be a complex task, especially if you are new to web development.
